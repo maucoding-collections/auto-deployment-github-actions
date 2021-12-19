@@ -14,4 +14,5 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           user: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
+          port: 11103
           command: cd /Users/yusufakhsanhidayat/Web/auto-deploy-github-actions && git pull origin master && npm install && npm run build && pm2 restart web
