@@ -1,0 +1,17 @@
+name: Deploy Prod Demo
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Deployment Demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH Remote
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ SSH_HOST }}
+          user: ${{ SSH_USER }}
+          key: ${{ SSH_KEY }}
+          coommand: cd /Users/yusufakhsanhidayat/Web/auto-deploy-github-actions && git pull origin master && npm install && npm run build && pm2 restart web
